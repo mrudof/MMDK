@@ -1,0 +1,13 @@
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+ <% end %>
+
+<form action= "/answers" method = "post">
+<label for "text">Your answer:</label>
+<input type="textarea" name = "text"/>
+<br>
+<input id="new-answer-submit" type="submit" value="Post Answer">
+</form>
