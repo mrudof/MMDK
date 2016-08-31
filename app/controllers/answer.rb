@@ -3,10 +3,10 @@ get 'question/:id' do
 end
 
 post '/answers' do
-  @answer = Answer.new(text: params[:text], user_id: sessions[:user_id], question_id: params[:id])
+  @answer = Answer.new(text: params[:text], user_id: session[:user_id], question_id: params[:id])
   if @answer.save
-    if response.xhr?
-      JSON.generate(@answer)
+    if request.xhr?
+      erb :'answers/new_answers'
     end
     redirect "/questions/#{params[:id]}"
   else
