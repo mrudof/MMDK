@@ -7,10 +7,10 @@
       <p><%= answer.user.username %></p>
       <p><%= answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
     </div>
+
+    <%= erb :'responses/answer/index', locals: { answer: answer } %>
   <% end %>
 </div>
-
-
 
 <% if login? %>
     <%= erb :'answers/new' %>
