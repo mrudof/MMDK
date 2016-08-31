@@ -1,9 +1,22 @@
 <div>
-  <h2><%= @question.title %></h2>
-</div>
+  <div>
+    <h2><%= @question.title %></h2>
+  </div>
 
-<div>
-  <p><%= @question.text %></p>
+  <div>
+    <p><%= @question.text %></p>
+  </div>
+
+  <div>
+    <p>Asked <%= @question.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+    <div>
+      <p><%= @question.user.username %></p>
+    </div>
+  </div>
+
+  <%= erb :'responses/question/index' %>
+
 </div>
 
 <%= erb :'answers/show' %>
+

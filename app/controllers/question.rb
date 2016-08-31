@@ -10,8 +10,8 @@ end
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @answers = @question.answers
+  @question_responses = @question.responses
   erb :'questions/show'
-
 end
 
 post '/questions' do

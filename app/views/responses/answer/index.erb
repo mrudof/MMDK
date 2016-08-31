@@ -1,0 +1,14 @@
+<div>
+  <div>
+    <% answer.responses.each do |response| %>
+      <div>
+        <p><%= response.text %> - <a href="/users/<%= response.user.id %>"><%= response.user.username %></a> <%= response.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+      </div>
+    <% end %>
+  </div>
+  <div id="new-response-container">
+    <p>
+      <a id="new-response" href="/responses/new">Add a response</a>
+    </p>
+  </div>
+</div>
