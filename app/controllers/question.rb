@@ -1,20 +1,23 @@
-
-get '/users/:user_id/questions' do
-  @user = User.find(params[:user_id])
-  @questions = @user.questions
+get '/questions' do
+  @questions = Question.all
   erb :'questions/index'
 end
 
-get '/users/:user_id/questions/new' do
-  @user = User.find(params[:user_id])
+get '/questions/new' do
   erb :'questions/new'
 end
 
-post '/users/:user_id/questions' do
-  @user = User.find(params[:user_id])
+get '/questions/:id' do
+  @question = Question.find(params[:id])
+  @answers = @question.answers
+  erb :'questions/show'
+end
+
+post '/questions' do
+  @user = current_user
   @question = @user.questions.new(params[:question])
   if @question.save
-    redirect "/users/#{@user.id}/questions"
+    redirect "/questions"
   else
     @errors = @question.errors.full_messages
     erb :'questions/new'

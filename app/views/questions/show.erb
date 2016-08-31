@@ -1,0 +1,19 @@
+<div>
+  <h2><%= @question.title %></h2>
+</div>
+
+<div>
+  <p><%= @question.text %></p>
+</div>
+
+<% @answers.each do |answer| %>
+  <div>
+    <div>
+      <p><%= answer.text %></p>
+    </div>
+    <div>
+      <p><%= answer.user %></p>
+      <p><%= answer.created_at.strftime('%b %d \'%y at %H:%M')</p>
+    </div>
+  </div>
+<% end %>
