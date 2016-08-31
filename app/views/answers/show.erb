@@ -1,14 +1,16 @@
-<% @answers.each do |answer| %>
-  <div id="answer-post">
-    <div >
+<div id="answer-post">
+  <% @answers.each do |answer| %>
+    <div>
       <p><%= answer.text %></p>
     </div>
     <div>
       <p><%= answer.user.username %></p>
       <p><%= answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
+
 
 <% if login? %>
     <%= erb :'answers/new' %>
