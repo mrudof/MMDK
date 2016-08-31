@@ -1,7 +1,5 @@
 get 'question/:id' do
-  if login?
-    erb :'answers/new'
-  end
+
 end
 
 post '/answers' do

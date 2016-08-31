@@ -12,7 +12,7 @@ post '/login' do
   @user = User.find_by(email: params[:user][:email])
   if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect '/'
+      redirect '/questions'
   else
     @errors = "Username and Password didn't match"
     erb :'users/login'
@@ -23,7 +23,7 @@ post '/users/new' do
    @user = User.new(params[:user])
   if @user.save
     session[:user_id] = @user.id
-    redirect '/'
+    redirect '/questions'
   else
     @errors = @user.errors.full_messages
     erb :'users/new'
@@ -32,6 +32,6 @@ end
 
 get '/logout' do
   session.delete(:user_id)
-  redirect '/'
+  redirect '/questions'
 end
 
