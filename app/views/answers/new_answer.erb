@@ -1,0 +1,9 @@
+<div id="new-answer">
+    <div >
+      <p><%= @answer.text %></p>
+    </div>
+    <div>
+      <p><%= @answer.user.username %></p>
+      <p><%= @answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+    </div>
+  </div>

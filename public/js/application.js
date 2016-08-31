@@ -5,6 +5,8 @@ $(document).ready(function () {
     $.ajax({
       method: 'post',
       url: '/answers'
+    }).done(function(response){
+      $(response).after('#answer-post')
     })
   });
 
