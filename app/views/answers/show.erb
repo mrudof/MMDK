@@ -8,7 +8,7 @@
       <p><%= answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
     </div>
 
-    <%= erb :'responses/answer/index', locals: { answer: answer } %>
+    <%= erb :'comments/answer/index', locals: { answer: answer } %>
   <% end %>
 </div>
 

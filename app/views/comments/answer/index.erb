@@ -1,0 +1,14 @@
+<div>
+  <div>
+    <% answer.comments.each do |comment| %>
+      <div>
+        <p><%= comment.text %> - <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a> <%= comment.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+      </div>
+    <% end %>
+  </div>
+  <div id="new-comment-container">
+    <p>
+      <a id="new-comment" href="/comments/new">Add a comment</a>
+    </p>
+  </div>
+</div>

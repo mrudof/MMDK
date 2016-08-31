@@ -1,0 +1,17 @@
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div>
+  <form action="/comments" method="POST">
+    <input type="hidden" name="comment[commentable_id]" value="<%= @question.id %>">
+    <input type="hidden" name="comment[commentable_type]" value="Question">
+    <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
+    <input type="text" name="comment[text]">
+    <input type="submit" value="Comment">
+  </form>
+</div>

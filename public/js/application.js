@@ -9,7 +9,7 @@ $(document).ready(function () {
       url: '/answers',
       data: input
     }).done(function(response){
-      $('#answer-post').after(response)
+      $('#answer-post').append(response)
     }).fail(function(err) {
       $('#answer-form').before(err["responseText"])
     })

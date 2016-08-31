@@ -16,5 +16,5 @@ end
 
 Question.find_or_create_by(user_id: 2, title: "Spaghetti Squash", text: "How long should I put a spaghetti squash in the oven?")
 Answer.find_or_create_by(question_id: 1, user_id: 4, text: "30 minutes at 435 degrees Fahrenheit yo")
-Response.find_or_create_by(user_id: 3, respondable_id: 1, respondable_type: "Answer", text: "You, DANIEL, are wrong - this will burn the Spaghetti squash")
+Comment.find_or_create_by(user_id: 3, commentable_id: 1, commentable_type: "Answer", text: "You, DANIEL, are wrong - this will burn the Spaghetti squash")
 Vote.find_or_create_by(user_id: 1, votable_id: 1, votable_type: "Answer", upvote?: false)
