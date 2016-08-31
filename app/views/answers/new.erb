@@ -5,10 +5,10 @@
   <% end %>
  <% end %>
 
-<form action= "/answers" method = "post">
+<form id="answer-form" action= "/answers" method = "post">
 <input type="hidden" name = "id" value= "<%= params[:id] %>" />
 <label for "text">Your answer:</label>
-<input type="textarea" name = "text"/>
+<input id="answer-text" type="textarea" name = "text"/>
 <br>
 <input id="new-answer-submit" type="submit" value="Post Answer">
 </form>

@@ -1,13 +1,20 @@
 $(document).ready(function () {
 
-  $('#new-answer-submit').submit(function(event){
-    $event.preventDefault;
+  $('#answer-form').submit(function(event){
+
+    event.preventDefault();
+    var input = $(this).serialize();
     $.ajax({
       method: 'post',
-      url: '/answers'
+      url: '/answers',
+      data: input
     }).done(function(response){
-      $(response).after('#answer-post')
+      $('#answer-post').after(response)
+    }).fail(function(err) {
+      $('#answer-form').before(err["responseText"])
     })
+    $('#answer-errors').remove();
+    $('#answer-text').val("");
   });
 
 });
