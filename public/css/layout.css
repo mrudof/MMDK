@@ -52,6 +52,27 @@
   right: 0px;
 }
 
-.upvote-button {
-
+/* Answer */
+.each-separate-answer {
+  margin-bottom: 20px;
 }
+
+.each-separate-answer:first-child {
+  margin-top: 20px;
+}
+
+
+
+
+.main-answer {
+  margin-left: 20px;
+}
+
+.answer-vote {
+  margin: auto;
+}
+
+.answer-and-votes {
+  display: inline-flex;
+}
+

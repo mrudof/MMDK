@@ -78,3 +78,41 @@
   box-shadow: 0 4px 8px black;
 }
 
+/* Answer */
+.new-answer-comment-link {
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  background-color: #2d2e2f;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px black;
+  transition: all 0.5s ease-out;
+}
+
+.new-answer-comment-link:hover {
+  box-shadow: 0 4px 8px black;
+}
+
+.main-answer {
+  padding: 20px;
+}
+
+.answer-vote {
+  padding: 20px;
+}
+
+.upvote-button {
+  padding-bottom: 15px;
+}
+
+.answer-comment {
+  border-top: 0.25px solid grey;
+}
+
+.answer-comment:first-child {
+  border-style: none;
+}
+
+.answer-comment:last-child {
+  border-bottom: 0.25px solid grey;
+}
