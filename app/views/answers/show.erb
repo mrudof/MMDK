@@ -1,5 +1,6 @@
 <div id="answer-post">
   <% @answers.each do |answer| %>
+    <div class="each-separate-answer">
     <div>
       <p><%= answer.text %></p>
     </div>
@@ -10,7 +11,7 @@
     <% if login? %>
       <% unless session[:user_id] == answer.user.id %>
         <div class= "vote-form" id = "<%=answer.id%>">
-        <p class="answer-vote-count">Vote Count: <%= answer.vote_count %></>
+        <p class="answer-vote-count">Vote Count: <%= answer.vote_count %></p>
         <form id="answer-upvote-button" action="/questions/<%= @question.id %>/answers/upvote" method="POST">
           <button  type="submit">Upvote</button>
         </form>
@@ -21,6 +22,7 @@
     <% end %>
   <% end %>
     <%= erb :'comments/answer/index', locals: { answer: answer } %>
+  </div>
   <% end %>
 </div>
 

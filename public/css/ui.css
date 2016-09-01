@@ -1,0 +1,17 @@
+/* Header */
+#layout-header {
+  width: 100%;
+  height: 5%;
+  background-color: #2d2e2f;
+  color: white;
+}
+
+#user-status a {
+  text-decoration: none;
+  color: white;
+}
+
+#user-status a:hover {
+  cursor: pointer;
+  background-color: #3b4045;
+}

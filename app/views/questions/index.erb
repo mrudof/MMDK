@@ -1,11 +1,13 @@
-<div>
-  <a href="/questions/new">Ask Question</a>
-</div>
+<div class="content-container">
+  <div>
+    <a href="/questions/new">Ask Question</a>
+  </div>
 
-<div>
-  <ul>
-    <% @questions.each do |question| %>
-      <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
-    <% end %>
-  </ul>
+  <div>
+    <ul>
+      <% @questions.each do |question| %>
+        <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+      <% end %>
+    </ul>
+  </div>
 </div>

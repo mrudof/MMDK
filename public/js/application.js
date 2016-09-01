@@ -19,7 +19,7 @@ $(document).ready(function () {
 
 // Question-based Response-based AJAX
 $(document).ready(function () {
-  $('#new-question-comment-link').click(function (event) {
+  $('.new-question-comment-link').click(function (event) {
     event.preventDefault();
     var request = $.ajax({
       url: $(event.target).attr("href"),
@@ -33,7 +33,7 @@ $(document).ready(function () {
     });
   });
 
-  $('#new-question-comment-container').on("submit", "#new-question-comment-form", function(event) {
+  $('.new-question-comment-container').on("submit", "#new-question-comment-form", function(event) {
     event.preventDefault();
     var input_data = $(this).serialize();
 
@@ -46,8 +46,8 @@ $(document).ready(function () {
     request.done(function (response) {
       $(event.target).hide();
       $("#question-comments").append(response);
-      var addCommentLink = $(event.target).closest("#question-comments").find("#new-question-comment-link");
-      $(event.target).closest("#question-comments").find("#new-question-comment-link").remove();
+      var addCommentLink = $(event.target).closest("#question-comments").find(".new-question-comment-link");
+      $(event.target).closest("#question-comments").find(".new-question-comment-link").remove();
       $("#question-comments").append(addCommentLink);
       $(addCommentLink).show();
     });
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
 // Answer-based Response-based AJAX
 $(document).ready(function () {
-  $('#new-answer-comment-link').click(function (event) {
+  $('.new-answer-comment-link').click(function (event) {
     event.preventDefault();
     var request = $.ajax({
       url: $(event.target).attr("href"),
@@ -64,13 +64,12 @@ $(document).ready(function () {
     });
 
     request.done(function (response) {
-      debugger;
       $(event.target).hide();
       $(event.target).after(response);
     });
   });
 
-  $('#new-answer-comment-container').on("submit", "#new-answer-comment-form", function(event) {
+  $('.new-answer-comment-container').on("submit", "#new-answer-comment-form", function(event) {
     event.preventDefault();
     var input_data = $(this).serialize();
 
@@ -82,14 +81,16 @@ $(document).ready(function () {
 
     request.done(function (response) {
       $(event.target).hide();
-      $("#answer-comments").append(response);
-      var addCommentLink = $(event.target).closest("#answer-comments").find("#new-answer-comment-link");
-      $(event.target).closest("#answer-comments").find("#new-answer-comment-link").remove();
-      $("#answer-comments").append(addCommentLink);
+      $(".answer-comments").append(response);
+      var addCommentLink = $(event.target).closest(".answer-comments").find(".new-answer-comment-link");
+      $(event.target).closest(".answer-comments").find(".new-answer-comment-link").remove();
+      $(event.target).closest(".answer-comments").append(addCommentLink);
       $(addCommentLink).show();
     });
   });
+});
 
+$(document).ready(function () {
   $('#upvote-button').on('submit', function(event){
     event.preventDefault();
     var question_id = $('.question-title').attr('id')
@@ -137,6 +138,4 @@ $('#answer-post').on('submit', '#answer-downvote-button', function(event){
       $('#'+answer_id+'.vote-form').children('p').first().text('Vote Count: ' + response);
     })
   });
-
-
 });

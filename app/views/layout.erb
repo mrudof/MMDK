@@ -11,6 +11,8 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/ui.css">
   <!--
     Google-hosted jQuery
   -->
@@ -23,13 +25,18 @@
   <title></title>
 </head>
 <body>
-  <% if login? %>
-    <a href="/logout">Logout</a>
-    <a href="/user/<%= current_user.id %>"><%= current_user.username%></a>
-  <% else %>
-    <a href="/login">Login</a>
-    <a href="/users/new">Register</a>
-  <% end %>
+  <header id="layout-header">
+    <div id="user-status">
+      <% if login? %>
+        <a class="login-logout" href="/logout">Logout</a>
+        <a href="/users/<%= current_user.id %>"><%= current_user.username%></a>
+      <% else %>
+        <a class="login-logout" href="/login">Login</a>
+        <a href="/users/new">Register</a>
+      <% end %>
+    </div>
+    <h3>Pot OverBoil</h3>
+  </header>
   <%= yield %>
 </body>
 </html>
