@@ -44,3 +44,15 @@ post '/questions/:id/answers/:answer_id/downvote' do
   end
 end
 
+post '/answers/:id/edit' do
+  @answer = Answer.find(params[:id])
+  @question = Question.find(@answer.question.id)
+  @question.favorite_answer_id = @answer.id
+  @question.save
+  if request.xhr?
+    "<p id=\"favorite-#{@question.id}\">Favorite answer!</p>"
+  else
+
+  end
+end
+
