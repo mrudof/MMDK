@@ -13,10 +13,11 @@
       <p><%= @question.user.username %></p>
     </div>
   </div>
-    <% if login? %>
-    <% unless session[:user_id] == @question.user.id %>
+
       <div>
-        <p class="vote-count">Vote Count: <%= @question.vote_count %></>
+        <p class="vote-count">Vote Count: <%= @question.vote_count %></p>
+          <% if login? %>
+    <% unless session[:user_id] == @question.user.id %>
         <form id="upvote-button" action="/questions/<%= @question.id %>/upvote" method="POST">
           <button  type="submit">Upvote</button>
         </form>

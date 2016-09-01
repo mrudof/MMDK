@@ -8,6 +8,8 @@
       <p><%= answer.user.username %></p>
       <p><%= answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
     </div>
+    <div class= "vote-form" id = "<%=answer.id%>">
+     <p class="answer-vote-count">Vote Count: <%= answer.vote_count %></p>
     <% if login? %>
       <% unless session[:user_id] == answer.user.id %>
         <div class= "vote-form" id = "<%=answer.id%>">
@@ -15,7 +17,7 @@
         <form id="answer-upvote-button" action="/questions/<%= @question.id %>/answers/upvote" method="POST">
           <button  type="submit">Upvote</button>
         </form>
-        <form id="answer-downvote-button" action="/questions/<%= @question.id %>/answers/downvote" method="POST">
+        <form id="answer-downvote-button" action="/questions/<%= @question.id %>/answers/<%=answer.id%>/downvote" method="POST">
           <button type="submit">Downvote</button>
         </form>
       </div>

@@ -30,6 +30,8 @@ post '/questions/:id/upvote' do
   @vote = Vote.create(votable_id: params[:id], votable_type: "Question", upvote?: true, user_id: session[:user_id])
   if request.xhr?
     @question.vote_count.to_s
+  else
+    redirect "/questions/#{@question.id}"
   end
 end
 
@@ -38,6 +40,8 @@ post '/questions/:id/downvote' do
   @vote = Vote.create(votable_id: params[:id], votable_type: "Question", upvote?: false, user_id: session[:user_id])
   if request.xhr?
     @question.vote_count.to_s
+  else
+    redirect "/questions/#{@question.id}"
   end
 end
 
