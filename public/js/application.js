@@ -98,7 +98,7 @@ $(document).ready(function () {
       method: 'post',
       url: '/questions/'+question_id+'/upvote'
     }).done(function(response){
-      $('.vote-count').text('Vote Count: ' + response);
+      $('.vote-count').text(response);
     })
   });
 
@@ -109,7 +109,7 @@ $(document).ready(function () {
       method: 'post',
       url: '/questions/'+question_id+'/downvote'
     }).done(function(response){
-      $('.vote-count').text('Vote Count: ' + response);
+      $('.vote-count').text(response);
     })
   });
 
@@ -122,7 +122,7 @@ $(document).ready(function () {
       method: 'post',
       url: '/questions/'+question_id+'/answers/'+answer_id+'/upvote'
     }).done(function(response){
-      $('#'+answer_id+'.vote-form').children('p').first().text('Vote Count: ' + response);
+      $('#'+answer_id+'.vote-form').children('p').first().text(response);
     })
   });
 
@@ -135,7 +135,7 @@ $('#answer-post').on('submit', '#answer-downvote-button', function(event){
       method: 'post',
       url: '/questions/'+question_id+'/answers/'+answer_id+'/downvote'
     }).done(function(response){
-      $('#'+answer_id+'.vote-form').children('p').first().text('Vote Count: ' + response);
+      $('#'+answer_id+'.vote-form').children('p').first().text(response);
     })
   });
 

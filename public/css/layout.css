@@ -1,5 +1,7 @@
 #yield {
-  margin-top: 4%;
+ /* margin-top: 6%;*/
+ position: relative;
+ top: 50px;
 }
 
 /* Header */
@@ -26,4 +28,30 @@
 }
 
 /* Question */
+.main-question {
+  margin-left: 20px;
+}
 
+.question-vote {
+  margin: auto;
+}
+
+.question-and-votes {
+  display: inline-flex;
+}
+
+.vote-count {
+  display: block;
+  position: absolute;
+  margin-top: 34px;
+  margin-left: 6px;
+}
+
+.profile-card {
+  position: relative;
+  right: 0px;
+}
+
+.upvote-button {
+
+}
