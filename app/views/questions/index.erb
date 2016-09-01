@@ -1,8 +1,11 @@
-<div>
+<div id="main">
+  <%if login?%>
   <div>
     <a href="/questions/new">Ask Question</a>
   </div>
-
+ <%else%>
+  <p>Login or register to ask a question!</p>
+ <%end%>
   <div>
     <ul>
       <% @questions.each do |question| %>
@@ -10,4 +13,5 @@
       <% end %>
     </ul>
   </div>
+  <img class="homer-picture" src="https://67.media.tumblr.com/6587a382f1b0e5a7d495d8bd4fc55fcd/tumblr_njax7zRQFH1sakzt7o1_500.gif">
 </div>

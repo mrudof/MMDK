@@ -76,3 +76,13 @@
   display: inline-flex;
 }
 
+.homer-picture {
+  margin-left: 25%;
+
+  width: 40%;
+}
+
+li {
+  list-style-type: none;
+}
+

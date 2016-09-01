@@ -19,7 +19,7 @@ $(document).ready(function () {
 
 // Question-based Response-based AJAX
 $(document).ready(function () {
-  $('.new-question-comment-link').click(function (event) {
+  $('#question-comments').on('click', '.new-question-comment-link', function (event) {
     event.preventDefault();
     var request = $.ajax({
       url: $(event.target).attr("href"),
@@ -33,7 +33,7 @@ $(document).ready(function () {
     });
   });
 
-  $('.new-question-comment-container').on("submit", "#new-question-comment-form", function(event) {
+  $('#question-comments').on("submit", "#new-question-comment-form", function(event) {
     event.preventDefault();
     var input_data = $(this).serialize();
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
 // Answer-based Response-based AJAX
 $(document).ready(function () {
-  $('.new-answer-comment-link').click(function (event) {
+  $('.answer-comments').on('click', '.new-answer-comment-link', function (event) {
     event.preventDefault();
     var request = $.ajax({
       url: $(event.target).attr("href"),
@@ -69,8 +69,12 @@ $(document).ready(function () {
     });
   });
 
-  $('.new-answer-comment-container').on("submit", "#new-answer-comment-form", function(event) {
+  $('.answer-comments').on("submit", "#new-answer-comment-form", function(event) {
+
+    var answer_id = $(event.target).closest('.answer-comments').attr('id')
+
     event.preventDefault();
+     // debugger;
     var input_data = $(this).serialize();
 
     var request = $.ajax({
@@ -80,8 +84,9 @@ $(document).ready(function () {
     });
 
     request.done(function (response) {
+      // debugger;
       $(event.target).hide();
-      $(".answer-comments").append(response);
+      $('#'+answer_id+'.answer-comments').append(response);
       var addCommentLink = $(event.target).closest(".answer-comments").find(".new-answer-comment-link");
       $(event.target).closest(".answer-comments").find(".new-answer-comment-link").remove();
       $(event.target).closest(".answer-comments").append(addCommentLink);

@@ -116,3 +116,6 @@
 .answer-comment:last-child {
   border-bottom: 0.25px solid grey;
 }
+.comment{
+  border-bottom: 0.25px solid grey;
+}

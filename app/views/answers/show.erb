@@ -5,7 +5,7 @@
       <div class= "votes-form answer-and-favorite-vote" id = "<%=answer.id%>">
         <div class="answer-vote">
         <p class="vote-count"><%= answer.vote_count %></p>
-        <% if login? %>
+
           <div class= "vote-form" id = "<%=answer.id%>">
           <!--   <p class="answer-vote-count">Vote Count: <%= answer.vote_count %></p> -->
             <form class="upvote-button" id="answer-upvote-button" action="/questions/<%= @question.id %>/answers/upvote" method="POST">
@@ -16,7 +16,6 @@
             </form>
           </div>
         </div>
-        <% end %>
         <% if session[:user_id] == answer.question.user.id %>
           <form class="favorite-form" action = "/answers/<%=answer.id%>/edit" method = "POST">
             <button type="submit">Favorite Answer</button>
