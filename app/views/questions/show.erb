@@ -5,28 +5,29 @@
       <h2><%= @question.title %></h2>
     </div>
 
-    <div class="question-text">
-      <p><%= @question.text %></p>
-    </div>
-
-    <div>
-      <p>Asked <%= @question.created_at.strftime('%b %d \'%y at %H:%M') %></p>
-      <div>
-        <p><%= @question.user.username %></p>
-      </div>
-    </div>
-    <div>
-      <p class="vote-count"><%= @question.vote_count %></p>
-      <% if login? %>
-
+    <div class="question-and-votes">
+      <div class="question-vote">
+        <p class="vote-count"><%= @question.vote_count %></p>
+        <% if login? %>
           <form id="upvote-button" action="/questions/<%= @question.id %>/upvote" method="POST">
            <button class="up-pizza" type="submit"></button>
           </form>
           <form id="downvote-button" action="/questions/<%= @question.id %>/downvote" method="POST">
             <button class="down-pizza" type="submit"></button>
           </form>
-
-      <% end %>
+        <% end %>
+      </div>
+      <div class="main-question">
+        <div class="question-text">
+          <p><%= @question.text %></p>
+        </div>
+        <div class="profile-card">
+          <p>Asked <%= @question.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+          <div>
+            <p><%= @question.user.username %></p>
+          </div>
+        </div>
+      </div>
     </div>
     <%= erb :'comments/question/index' %>
   </div>
