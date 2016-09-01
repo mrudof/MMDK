@@ -7,10 +7,10 @@
 <% end %>
 
 <div>
-  <form action="/comments" method="POST">
-    <input type="hidden" name="comment[commentable_id]" value="">
+  <form id="new-answer-comment-form" action="/answer/comments" method="POST">
+    <input type="hidden" name="comment[commentable_id]" value="<%= @answer.id %>">
     <input type="hidden" name="comment[commentable_type]" value="Answer">
-    <input type="hidden" name="comment[user_id]" value="current_user.id">
+    <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
     <input type="text" name="comment[text]">
     <input type="submit" value="Comment">
   </form>

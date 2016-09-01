@@ -1,4 +1,4 @@
-get 'question/:id' do
+get 'question/:questid' do
 
 end
 
