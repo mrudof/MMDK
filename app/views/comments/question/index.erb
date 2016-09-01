@@ -1,4 +1,4 @@
-<div>
+<div id="question-comments">
   <div>
     <% @question_comments.each do |comment| %>
       <div>
@@ -6,9 +6,9 @@
       </div>
     <% end %>
   </div>
-  <div id="new-comment-container">
+  <div id="new-question-comment-container">
     <p>
-      <a id="new-comment" href="/questions/<%= @question.id %>/comments/new">Add a comment</a>
+      <a id="new-question-comment-link" href="/questions/<%= @question.id %>/comments/new">Add a comment</a>
     </p>
   </div>
 </div>
