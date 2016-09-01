@@ -18,17 +18,14 @@
     <div>
       <p class="vote-count"><%= @question.vote_count %></p>
       <% if login? %>
-        <% unless session[:user_id] == @question.user.id %>
+
           <form id="upvote-button" action="/questions/<%= @question.id %>/upvote" method="POST">
            <button class="up-pizza" type="submit"></button>
           </form>
           <form id="downvote-button" action="/questions/<%= @question.id %>/downvote" method="POST">
             <button class="down-pizza" type="submit"></button>
           </form>
-          <% else %>
-           <button class="up-pizza"></button>
-            <button class="down-pizza"></button>
-        <% end %>
+
       <% end %>
     </div>
     <%= erb :'comments/question/index' %>
