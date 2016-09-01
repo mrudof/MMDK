@@ -25,6 +25,9 @@
           <form id="downvote-button" action="/questions/<%= @question.id %>/downvote" method="POST">
             <button class="down-pizza" type="submit"></button>
           </form>
+          <% else %>
+           <button class="up-pizza"></button>
+            <button class="down-pizza"></button>
         <% end %>
       <% end %>
     </div>
