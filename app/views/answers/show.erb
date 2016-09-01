@@ -1,37 +1,42 @@
 <div id="answer-post">
   <% @answers.each do |answer| %>
-    <div class="each-separate-answer">
-    <div>
-      <p><%= answer.text %></p>
-    </div>
-    <div>
-      <p><%= answer.user.username %></p>
-      <p><%= answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
-    </div>
-    <div class= "vote-form" id = "<%=answer.id%>">
-     <p class="answer-vote-count">Vote Count: <%= answer.vote_count %></p>
-    <% if login? %>
+    <div class="each-separate-answer card">
+      <div class="answer-and-votes">
+      <div class= "votes-form answer-and-favorite-vote" id = "<%=answer.id%>">
+        <div class="answer-vote">
+        <p class="vote-count"><%= answer.vote_count %></p>
 
-        <div class= "vote-form" id = "<%=answer.id%>">
-        <p class="answer-vote-count">Vote Count: <%= answer.vote_count %></p>
-        <form id="answer-upvote-button" action="/questions/<%= @question.id %>/answers/upvote" method="POST">
-          <button  type="submit">Upvote</button>
-        </form>
-        <form id="answer-downvote-button" action= "/questions/<%= @question.id %>/answers/upvote"method="POST">
-          <button type="submit">Downvote</button>
-        </form>
-
-  <% end %>
+          <div class= "vote-form" id = "<%=answer.id%>">
+          <!--   <p class="answer-vote-count">Vote Count: <%= answer.vote_count %></p> -->
+            <form class="upvote-button" id="answer-upvote-button" action="/questions/<%= @question.id %>/answers/upvote" method="POST">
+              <button class="up-pizza" type="submit"></button>
+            </form>
+            <form id="answer-downvote-button" action= "/questions/<%= @question.id %>/answers/upvote"method="POST">
+              <button class="down-pizza" type="submit"></button>
+            </form>
+          </div>
+        </div>
         <% if session[:user_id] == answer.question.user.id %>
-        <form class="favorite-form" action = "/answers/<%=answer.id%>/edit" method = "POST">
-          <button type="submit">Favorite Answer</button>
-        </form>
+          <form class="favorite-form" action = "/answers/<%=answer.id%>/edit" method = "POST">
+            <button type="submit">Favorite Answer</button>
+          </form>
         <%end%>
         <% if answer.question.favorite_answer_id == answer.id %>
           <p id="favorite-<%=answer.question.id%>">Favorite answer!</p>
-          <%end%>
+        <%end%>
       </div>
-
+      <div class="main-answer">
+        <div class="answer-text">
+        <div>
+          <p><%= answer.text %></p>
+        </div>
+        <div class="profile-card">
+          <p><%= answer.user.username %></p>
+          <p><%= answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+        </div>
+       </div>
+      </div>
+    </div>
     <%= erb :'comments/answer/index', locals: { answer: answer } %>
   </div>
   <% end %>

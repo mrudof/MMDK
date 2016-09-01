@@ -1,14 +1,16 @@
-<div class="answer-comments">
-  <div>
-    <% answer.comments.each do |comment| %>
-      <div>
-        <p><%= comment.text %> - <%= comment.user.username %> <%= comment.created_at.strftime('%b %d \'%y at %H:%M') %></p>
-      </div>
-    <% end %>
-  </div>
-  <div class="new-answer-comment-container">
-    <p>
-      <a class="new-answer-comment-link" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/comments/new">Add a comment</a>
-    </p>
+<div class="card">
+  <div class="answer-comments" id="<%=answer.id%>">
+    <div>
+      <% answer.comments.each do |comment| %>
+        <div class="answer-comment">
+          <p><%= comment.text %> - <%= comment.user.username %> <%= comment.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="new-answer-comment-container">
+      <p>
+        <a class="new-answer-comment-link" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/comments/new">Add a comment</a>
+      </p>
+    </div>
   </div>
 </div>
