@@ -11,7 +11,7 @@
     <input type="hidden" name="comment[commentable_id]" value="<%= @question.id %>">
     <input type="hidden" name="comment[commentable_type]" value="Question">
     <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
-    <input type="text" name="comment[text]">
+    <input class="question-comment-text" type="text" name="comment[text]">
     <input type="submit" value="Comment">
   </form>
 </div>
