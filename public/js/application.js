@@ -138,4 +138,19 @@ $('#answer-post').on('submit', '#answer-downvote-button', function(event){
       $('#'+answer_id+'.vote-form').children('p').first().text('Vote Count: ' + response);
     })
   });
+
+
+$('.favorite-form').submit(function(event){
+    event.preventDefault();
+
+    var question_id = $('.question-title').attr('id')
+    var answer_id = $(event.target).parent().attr('id')
+    $.ajax({
+      method: 'post',
+      url: '/answers/'+answer_id+'/edit'
+    }).done(function(response){
+    $('#favorite-'+question_id+'').remove()
+      $(event.target).after(response);
+    })
+  });
 });
