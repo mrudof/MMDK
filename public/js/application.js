@@ -26,8 +26,7 @@ $(document).ready(function () {
       method: "GET"
     });
 
-    request.done(function (response) {
-      // debugger;
+    request.done(function(response) {
       $(event.target).hide();
       $(event.target).after(response);
     });
@@ -50,7 +49,12 @@ $(document).ready(function () {
       $(event.target).closest("#question-comments").find(".new-question-comment-link").remove();
       $("#question-comments").append(addCommentLink);
       $(addCommentLink).show();
-    });
+    }).fail(function(err) {
+      // debugger;
+      $('#new-question-comment-form').before(err["responseText"])
+    })
+    $('.comment-question-errors').remove();
+    $('.question-comment-text').val("");
   });
 });
 
@@ -91,7 +95,11 @@ $(document).ready(function () {
       $(event.target).closest(".answer-comments").find(".new-answer-comment-link").remove();
       $(event.target).closest(".answer-comments").append(addCommentLink);
       $(addCommentLink).show();
-    });
+    }).fail(function(err) {
+      $('#new-answer-comment-form').before(err["responseText"])
+    })
+    $('.comment-answer-errors').remove();
+    $('.answer-comment-text').val("");
   });
 });
 
