@@ -5,3 +5,4 @@ end
 def login?
   !!current_user
 end
+

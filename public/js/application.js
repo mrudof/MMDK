@@ -89,4 +89,54 @@ $(document).ready(function () {
       $(addCommentLink).show();
     });
   });
+
+  $('#upvote-button').on('submit', function(event){
+    event.preventDefault();
+    var question_id = $('.question-title').attr('id')
+    $.ajax({
+      method: 'post',
+      url: '/questions/'+question_id+'/upvote'
+    }).done(function(response){
+      $('.vote-count').text('Vote Count: ' + response);
+    })
+  });
+
+   $('#downvote-button').on('submit', function(event){
+    event.preventDefault();
+    var question_id = $('.question-title').attr('id')
+    $.ajax({
+      method: 'post',
+      url: '/questions/'+question_id+'/downvote'
+    }).done(function(response){
+      $('.vote-count').text('Vote Count: ' + response);
+    })
+  });
+
+   $('#answer-post').on('submit', '#answer-upvote-button', function(event){
+    event.preventDefault();
+    var question_id = $('.question-title').attr('id')
+    var answer_id = $(event.target).parent().attr('id')
+
+    $.ajax({
+      method: 'post',
+      url: '/questions/'+question_id+'/answers/'+answer_id+'/upvote'
+    }).done(function(response){
+      $('#'+answer_id+'.vote-form').children('p').first().text('Vote Count: ' + response);
+    })
+  });
+
+$('#answer-post').on('submit', '#answer-downvote-button', function(event){
+    event.preventDefault();
+    var question_id = $('.question-title').attr('id')
+    var answer_id = $(event.target).parent().attr('id')
+
+    $.ajax({
+      method: 'post',
+      url: '/questions/'+question_id+'/answers/'+answer_id+'/downvote'
+    }).done(function(response){
+      $('#'+answer_id+'.vote-form').children('p').first().text('Vote Count: ' + response);
+    })
+  });
+
+
 });
