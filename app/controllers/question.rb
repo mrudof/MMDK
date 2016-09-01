@@ -27,7 +27,9 @@ end
 
 post '/questions/:id/upvote' do
   @question = Question.find(params[:id])
-  @vote = Vote.create(votable_id: params[:id], votable_type: "Question", upvote?: true, user_id: session[:user_id])
+  unless session[:user_id] == @question.user.id
+    @vote = Vote.create(votable_id: params[:id], votable_type: "Question", upvote?: true, user_id: session[:user_id])
+  end
   if request.xhr?
     @question.vote_count.to_s
   else
@@ -37,7 +39,9 @@ end
 
 post '/questions/:id/downvote' do
   @question = Question.find(params[:id])
-  @vote = Vote.create(votable_id: params[:id], votable_type: "Question", upvote?: false, user_id: session[:user_id])
+  unless session[:user_id] == @question.user.id
+    @vote = Vote.create(votable_id: params[:id], votable_type: "Question", upvote?: false, user_id: session[:user_id])
+  end
   if request.xhr?
     @question.vote_count.to_s
   else

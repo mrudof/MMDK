@@ -25,7 +25,9 @@ end
 post '/questions/:id/answers/:answer_id/upvote' do
   @question = Question.find(params[:id])
   @answer = Answer.find(params[:answer_id])
-  @vote = Vote.create(votable_id: params[:answer_id], votable_type: "Answer", upvote?: true, user_id: session[:user_id])
+  unless session[:user_id] == @answer.user.id
+    @vote = Vote.create(votable_id: params[:answer_id], votable_type: "Answer", upvote?: true, user_id: session[:user_id])
+  end
   if request.xhr?
     @answer.vote_count.to_s
   else
@@ -36,7 +38,9 @@ end
 post '/questions/:id/answers/:answer_id/downvote' do
   @question = Question.find(params[:id])
   @answer = Answer.find(params[:answer_id])
-  @vote = Vote.create(votable_id: params[:answer_id], votable_type: "Answer", upvote?: false, user_id: session[:user_id])
+  unless session[:user_id] == @answer.user.id
+    @vote = Vote.create(votable_id: params[:answer_id], votable_type: "Answer", upvote?: false, user_id: session[:user_id])
+  end
   if request.xhr?
     @answer.vote_count.to_s
   else
@@ -52,7 +56,7 @@ post '/answers/:id/edit' do
   if request.xhr?
     "<p id=\"favorite-#{@question.id}\">Favorite answer!</p>"
   else
-
+    redirect "/question/#{@question.id}"
   end
 end
 
