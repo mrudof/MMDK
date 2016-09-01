@@ -13,16 +13,19 @@
       <p><%= @question.user.username %></p>
     </div>
   </div>
-
-  <div>
-    <p class="vote-count">Vote Count: <%= @question.vote_count %></>
-    <form id="upvote-button" action="/questions/<%= @question.id %>/upvote" method="POST">
-      <button  type="submit">Upvote</button>
-    </form>
-    <form id="downvote-button" action="/questions/<%= @question.id %>/downvote" method="POST">
-      <button type="submit">Downvote</button>
-    </form>
-  </div>
+    <% if login? %>
+    <% unless session[:user_id] == @question.user.id %>
+      <div>
+        <p class="vote-count">Vote Count: <%= @question.vote_count %></>
+        <form id="upvote-button" action="/questions/<%= @question.id %>/upvote" method="POST">
+          <button  type="submit">Upvote</button>
+        </form>
+        <form id="downvote-button" action="/questions/<%= @question.id %>/downvote" method="POST">
+          <button type="submit">Downvote</button>
+        </form>
+      </div>
+    <% end %>
+    <% end %>
   <%= erb :'comments/question/index' %>
 
 </div>

@@ -16,5 +16,19 @@ post '/answers' do
   end
 end
 
+post '/questions/:id/answers/:id/upvote' do
+  @answer = Answer.find(params[:id])
+  @vote = Vote.create(votable_id: params[:id], votable_type: "Answer", upvote?: true, user_id: session[:user_id])
+  if request.xhr?
+    @answer.vote_count.to_s
+  end
+end
 
+post '/questions/:id/answers/:id/downvote' do
+  @answer = Answer.find(params[:id])
+  @vote = Vote.create(votable_id: params[:id], votable_type: "Answer", upvote?: false, user_id: session[:user_id])
+  if request.xhr?
+    @answer.vote_count.to_s
+  end
+end
 
