@@ -89,4 +89,28 @@ $(document).ready(function () {
       $(addCommentLink).show();
     });
   });
+
+  $('#upvote-button').on('submit', function(event){
+    event.preventDefault();
+    var question_id = $('.question-title').attr('id')
+    $.ajax({
+      method: 'post',
+      url: '/questions/'+question_id+'/upvote'
+    }).done(function(response){
+      $('.vote-count').text('Vote Count: ' + response);
+    })
+  });
+
+   $('#downvote-button').on('submit', function(event){
+    event.preventDefault();
+    var question_id = $('.question-title').attr('id')
+    $.ajax({
+      method: 'post',
+      url: '/questions/'+question_id+'/downvote'
+    }).done(function(response){
+      $('.vote-count').text('Vote Count: ' + response);
+    })
+  });
+
+
 });

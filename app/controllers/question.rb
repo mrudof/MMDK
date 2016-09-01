@@ -24,3 +24,19 @@ post '/questions' do
     erb :'questions/new'
   end
 end
+
+post '/questions/:id/upvote' do
+  @question = Question.find(params[:id])
+  @vote = Vote.create(votable_id: params[:id], votable_type: "Question", upvote?: true, user_id: session[:user_id])
+  if request.xhr?
+    @question.vote_count.to_s
+  end
+end
+
+post '/questions/:id/downvote' do
+  @question = Question.find(params[:id])
+  @vote = Vote.create(votable_id: params[:id], votable_type: "Question", upvote?: false, user_id: session[:user_id])
+  if request.xhr?
+    @question.vote_count.to_s
+  end
+end

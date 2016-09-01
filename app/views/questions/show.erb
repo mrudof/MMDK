@@ -1,5 +1,5 @@
 <div>
-  <div>
+  <div class="question-title" id="<%=@question.id%>">
     <h2><%= @question.title %></h2>
   </div>
 
@@ -14,6 +14,15 @@
     </div>
   </div>
 
+  <div>
+    <p class="vote-count">Vote Count: <%= @question.vote_count %></>
+    <form id="upvote-button" action="/questions/<%= @question.id %>/upvote" method="POST">
+      <button  type="submit">Upvote</button>
+    </form>
+    <form id="downvote-button" action="/questions/<%= @question.id %>/downvote" method="POST">
+      <button type="submit">Downvote</button>
+    </form>
+  </div>
   <%= erb :'comments/question/index' %>
 
 </div>
