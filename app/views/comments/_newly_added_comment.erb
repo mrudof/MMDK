@@ -1,3 +1,3 @@
 <div>
-  <p><%= @comment.text %> - <a href="/users/<%= @comment.user.id %>"><%= @comment.user.username %></a><%= @comment.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+  <p><%= @comment.text %> - <a href="/users/<%= @comment.user.id %>"><%= @comment.user.username %></a> <%= @comment.created_at.strftime('%b %d \'%y at %H:%M') %></p>
 </div>
