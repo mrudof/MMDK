@@ -27,6 +27,7 @@
 <body>
   <header id="layout-header">
     <div id="user-status">
+      <a href="/questions">Home</a>
       <% if login? %>
         <a class="login-logout" href="/logout">Logout</a>
         <a href="/users/<%= current_user.id %>"><%= current_user.username%></a>
@@ -37,6 +38,7 @@
     </div>
     <h3>Pot OverBoil</h3>
   </header>
+
   <%= yield %>
 </body>
 </html>
