@@ -30,7 +30,7 @@
       <a href="/questions">Home</a>
       <% if login? %>
         <a class="login-logout" href="/logout">Logout</a>
-        <a href="/users/<%= current_user.id %>"><%= current_user.username%></a>
+        Welcome, <%= current_user.username%>!
       <% else %>
         <a class="login-logout" href="/login">Login</a>
         <a href="/users/new">Register</a>
