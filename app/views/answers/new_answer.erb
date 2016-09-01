@@ -5,5 +5,6 @@
     <div>
       <p><%= @answer.user.username %></p>
       <p><%= @answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
+      <p>Vote Count: <%= @answer.vote_count %></p>
     </div>
   </div>

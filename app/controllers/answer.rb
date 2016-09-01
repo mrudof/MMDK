@@ -11,24 +11,36 @@ post '/answers' do
       status 422
       @errors = @answer.errors.full_messages
       erb :'answers/errors', layout: false
-       # redirect "/questions/#{params[:id]}"
+    end
+  else
+    if @answer.save
+      redirect "/questions/#{params[:id]}"
+    else
+      @errors = @answer.errors.full_messages
+      erb :'answers/new'
     end
   end
 end
 
-post '/questions/:id/answers/:id/upvote' do
-  @answer = Answer.find(params[:id])
-  @vote = Vote.create(votable_id: params[:id], votable_type: "Answer", upvote?: true, user_id: session[:user_id])
+post '/questions/:id/answers/:answer_id/upvote' do
+  @question = Question.find(params[:id])
+  @answer = Answer.find(params[:answer_id])
+  @vote = Vote.create(votable_id: params[:answer_id], votable_type: "Answer", upvote?: true, user_id: session[:user_id])
   if request.xhr?
     @answer.vote_count.to_s
+  else
+    redirect "/questions/#{@question.id}"
   end
 end
 
-post '/questions/:id/answers/:id/downvote' do
-  @answer = Answer.find(params[:id])
-  @vote = Vote.create(votable_id: params[:id], votable_type: "Answer", upvote?: false, user_id: session[:user_id])
+post '/questions/:id/answers/:answer_id/downvote' do
+  @question = Question.find(params[:id])
+  @answer = Answer.find(params[:answer_id])
+  @vote = Vote.create(votable_id: params[:answer_id], votable_type: "Answer", upvote?: false, user_id: session[:user_id])
   if request.xhr?
     @answer.vote_count.to_s
+  else
+    redirect "/questions/#{@question.id}"
   end
 end
 

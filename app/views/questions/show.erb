@@ -1,9 +1,10 @@
+<div class="container">
 <div>
   <div class="question-title" id="<%=@question.id%>">
     <h2><%= @question.title %></h2>
   </div>
 
-  <div>
+  <div class="question-text">
     <p><%= @question.text %></p>
   </div>
 
@@ -13,15 +14,15 @@
       <p><%= @question.user.username %></p>
     </div>
   </div>
-    <% if login? %>
-    <% unless session[:user_id] == @question.user.id %>
       <div>
-        <p class="vote-count">Vote Count: <%= @question.vote_count %></>
+        <p class="vote-count"><%= @question.vote_count %></p>
+          <% if login? %>
+    <% unless session[:user_id] == @question.user.id %>
         <form id="upvote-button" action="/questions/<%= @question.id %>/upvote" method="POST">
-          <button  type="submit">Upvote</button>
+         <button class="up-pizza" type="submit"></button>
         </form>
         <form id="downvote-button" action="/questions/<%= @question.id %>/downvote" method="POST">
-          <button type="submit">Downvote</button>
+          <button class="down-pizza" type="submit"></button>
         </form>
       </div>
     <% end %>
@@ -31,4 +32,4 @@
 </div>
 
 <%= erb :'answers/show' %>
-
+</div>
