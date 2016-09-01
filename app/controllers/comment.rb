@@ -39,7 +39,8 @@ post '/answer/comments' do
     if request.xhr?
       erb :'comments/_newly_added_comment', layout: false
     else
-      redirect "/questions/#{@comment.commentable_id}"
+      @answer = Answer.find(@comment.commentable_id)
+      redirect "/questions/#{@answer.question.id}"
     end
   else
     @errors = @comment.errors.full_messages

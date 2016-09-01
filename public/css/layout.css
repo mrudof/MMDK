@@ -1,0 +1,25 @@
+/* Header */
+#layout-header {
+  display: inline-flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#user-status {
+  position: relative;
+  margin: auto 0;
+}
+
+#layout-header h3 {
+  position: relative;
+  margin: auto;
+}
+
+.login-logout {
+  margin-right: 10px;
+}
+
+/* Question */
+
