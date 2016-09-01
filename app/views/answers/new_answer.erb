@@ -7,4 +7,8 @@
       <p><%= @answer.created_at.strftime('%b %d \'%y at %H:%M') %></p>
       <p>Vote Count: <%= @answer.vote_count %></p>
     </div>
+    <div id= "<%=@answer.id%>">
+    <form class="favorite-form" action = "/answers/<%=@answer.id%>/edit" method = "POST">
+          <button type="submit">Favorite Answer</button>
+        </form>
   </div>

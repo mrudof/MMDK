@@ -140,9 +140,8 @@ $('#answer-post').on('submit', '#answer-downvote-button', function(event){
   });
 
 
-$('.favorite-form').submit(function(event){
+$('#answer-post').on('submit', '.favorite-form', function(event){
     event.preventDefault();
-
     var question_id = $('.question-title').attr('id')
     var answer_id = $(event.target).parent().attr('id')
     $.ajax({
@@ -150,6 +149,7 @@ $('.favorite-form').submit(function(event){
       url: '/answers/'+answer_id+'/edit'
     }).done(function(response){
     $('#favorite-'+question_id+'').remove()
+
       $(event.target).after(response);
     })
   });

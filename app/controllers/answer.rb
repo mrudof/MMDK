@@ -52,7 +52,7 @@ post '/answers/:id/edit' do
   if request.xhr?
     "<p id=\"favorite-#{@question.id}\">Favorite answer!</p>"
   else
-
+    redirect "/question/#{@question.id}"
   end
 end
 
