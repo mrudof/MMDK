@@ -1,17 +1,17 @@
 <div id="main">
+  <img class="homer-picture" src="https://67.media.tumblr.com/6587a382f1b0e5a7d495d8bd4fc55fcd/tumblr_njax7zRQFH1sakzt7o1_500.gif">
   <%if login?%>
-  <div>
-    <a href="/questions/new">Ask Question</a>
+  <div class="login-question">
+    <a href="/questions/new">Click here to ask a question</a>
   </div>
  <%else%>
-  <p>Login or register to ask a question!</p>
+  <p class="login-question">Login or register to ask a question!</p>
  <%end%>
   <div>
     <ul>
       <% @questions.each do |question| %>
-        <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+        <li class="question-link-list"><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
       <% end %>
     </ul>
   </div>
-  <img class="homer-picture" src="https://67.media.tumblr.com/6587a382f1b0e5a7d495d8bd4fc55fcd/tumblr_njax7zRQFH1sakzt7o1_500.gif">
 </div>

@@ -1,9 +1,14 @@
 /* Header */
 #layout-header {
   width: 100%;
-  height: 5%;
+  height: 7%;
   background-color: #2d2e2f;
   color: white;
+  display: inline-flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 #user-status a {
@@ -13,7 +18,8 @@
 
 #user-status a:hover {
   cursor: pointer;
-  background-color: #3b4045;
+  background-color: white;
+  color: black;
 }
 
 /* Card UI */
@@ -118,4 +124,19 @@
 }
 .comment{
   border-bottom: 0.25px solid grey;
+}
+
+.question-link-list {
+  border-top: 1px solid gray;
+  width: 800px;
+  padding: 20px 20px 20px 40px;
+
+
+}
+
+.login-question {
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1em;
 }

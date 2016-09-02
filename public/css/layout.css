@@ -5,14 +5,6 @@
 }
 
 /* Header */
-#layout-header {
-  display: inline-flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
 #user-status {
   position: relative;
   margin: auto 0;
@@ -24,7 +16,10 @@
 }
 
 .login-logout {
-  margin-right: 10px;
+  margin-right: 2px;
+  margin-left: 5px;
+  border-right: 1px solid white;
+  padding-right: 8px;
 }
 
 /* Question */
@@ -61,9 +56,6 @@
   margin-top: 20px;
 }
 
-
-
-
 .main-answer {
   margin-left: 20px;
 }
@@ -78,7 +70,7 @@
 
 .homer-picture {
   margin-left: 25%;
-
+  margin-top: 1%;
   width: 40%;
 }
 
@@ -86,3 +78,15 @@ li {
   list-style-type: none;
 }
 
+.main-header {
+  margin: 25%;
+  width: 25%;
+  font-size: 2em;
+  font-family: gothic;
+}
+
+.home-link {
+  margin-left: 8px;
+  border-right: 1px solid white;
+  padding-right: 8px;
+}
