@@ -7,7 +7,7 @@
 
     <div class="question-and-votes">
       <div class="question-vote">
-        <p class="vote-count"><%= @question.vote_count %></p>
+        <p class="vote-count" id="<%=@question.id%>" ><%= @question.vote_count %></p>
           <form id="upvote-button" action="/questions/<%= @question.id %>/upvote" method="POST">
            <button class="up-pizza" type="submit"></button>
           </form>
