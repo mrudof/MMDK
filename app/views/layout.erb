@@ -27,16 +27,16 @@
 <body>
   <header id="layout-header">
     <div id="user-status">
-      <a href="/questions">Home</a>
+      <a class="home-link" href="/questions">Home</a>
       <% if login? %>
         <a class="login-logout" href="/logout">Logout</a>
-        Welcome, <%= current_user.username%>!
+         <%= current_user.username%>!
       <% else %>
         <a class="login-logout" href="/login">Login</a>
         <a href="/users/new">Register</a>
       <% end %>
     </div>
-    <h3>Pot OverBoil</h3>
+    <h3 class="main-header">Pot OverBoil</h3>
   </header>
   <div id="yield">
 
