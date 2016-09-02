@@ -96,7 +96,7 @@ $(document).ready(function () {
       $(event.target).closest(".answer-comments").append(addCommentLink);
       $(addCommentLink).show();
     }).fail(function(err) {
-      $('#new-answer-comment-form').before(err["responseText"])
+      $('#new-answer-comment-form').after(err["responseText"])
     })
     $('.comment-answer-errors').remove();
     $('.answer-comment-text').val("");
@@ -111,7 +111,7 @@ $(document).ready(function () {
       method: 'post',
       url: '/questions/'+question_id+'/upvote'
     }).done(function(response){
-      $('.vote-count').text(response);
+      $('#'+question_id+'.vote-count').text(response);
     })
   });
 
@@ -122,33 +122,33 @@ $(document).ready(function () {
       method: 'post',
       url: '/questions/'+question_id+'/downvote'
     }).done(function(response){
-      $('.vote-count').text(response);
+      $('#'+question_id+'.vote-count').text(response);
     })
   });
 
    $('#answer-post').on('submit', '#answer-upvote-button', function(event){
     event.preventDefault();
     var question_id = $('.question-title').attr('id')
-    var answer_id = $(event.target).parent().attr('id')
+    var answer_id = $(event.target).parent().parent().attr('id')
 
     $.ajax({
       method: 'post',
       url: '/questions/'+question_id+'/answers/'+answer_id+'/upvote'
     }).done(function(response){
-      $('#'+answer_id+'.vote-form').children('p').first().text(response);
+      $('#'+answer_id+'.answer-vote').children('p').first().text(response);
     })
   });
 
 $('#answer-post').on('submit', '#answer-downvote-button', function(event){
     event.preventDefault();
     var question_id = $('.question-title').attr('id')
-    var answer_id = $(event.target).parent().attr('id')
+    var answer_id = $(event.target).parent().parent().attr('id')
 
     $.ajax({
       method: 'post',
       url: '/questions/'+question_id+'/answers/'+answer_id+'/downvote'
     }).done(function(response){
-      $('#'+answer_id+'.vote-form').children('p').first().text(response);
+      $('#'+answer_id+'.answer-vote').children('p').first().text(response);
     })
   });
 

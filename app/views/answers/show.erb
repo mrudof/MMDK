@@ -3,10 +3,10 @@
     <div class="each-separate-answer card">
       <div class="answer-and-votes">
       <div class= "votes-form answer-and-favorite-vote" id = "<%=answer.id%>">
-        <div class="answer-vote">
+        <div class="answer-vote" id = "<%=answer.id%>">
         <p class="vote-count"><%= answer.vote_count %></p>
 
-          <div class= "vote-form" id = "<%=answer.id%>">
+          <div class= "vote-form">
           <!--   <p class="answer-vote-count">Vote Count: <%= answer.vote_count %></p> -->
             <form class="upvote-button" id="answer-upvote-button" action="/questions/<%= @question.id %>/answers/upvote" method="POST">
               <button class="up-pizza" type="submit"></button>
